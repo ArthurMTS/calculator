@@ -4,3 +4,80 @@
   outline: 0;
   box-sizing: border-box;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(45deg, #252535, #787889);
+}
+
+#calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #454556;
+  padding: 10px;
+  box-shadow: 1px 1px 5px rgb(34, 34, 34);
+}
+
+#calculator #buttons {
+  width: 100%;
+  display: grid;
+  grid-template: "ac ac ac add"
+                  ". . . sub"
+                  ". . . times"
+                  ". . . div"
+                  "zero zero zero equal";
+  grid-gap: 5px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 15px 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#view {
+  padding: 10px 20px;
+  font-size: 25px;
+  text-align: right;
+}
+
+#ac {
+  grid-area: ac;
+}
+
+#add {
+  grid-area: add;
+  color: #0d0030;
+}
+
+#sub {
+  grid-area: sub;
+  color: #0d0030;
+}
+
+#times {
+  grid-area: times;
+  color: #0d0030;
+}
+
+#div {
+  grid-area: div;
+  color: #0d0030;
+}
+
+#zero {
+  grid-area: zero;
+}
+
+#equal {
+  grid-area: equal;
+  background-color: #0d0030;
+  color: #EEE;
+}

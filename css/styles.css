@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -24,53 +26,68 @@ body {
   box-shadow: 1px 1px 5px rgb(34, 34, 34);
 }
 
+#calculator #view {
+  padding: 0 20px;
+  font-size: 35px;
+  text-align: right;
+  letter-spacing: 0.05em;
+  font-family: 'Langar';
+}
+
 #calculator #buttons {
   width: 100%;
+  margin-top: 10px;
   display: grid;
+  grid-gap: 10px;
   grid-template: "ac ac . add"
                   ". . . sub"
                   ". . . times"
                   ". . . div"
                   "zero zero zero equal";
-  grid-gap: 5px;
-  margin-top: 10px;
 }
 
 button {
-  padding: 15px 10px;
+  padding: 15px 0;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 25px;
+  font-family: 'Langar';
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  background-color: #EFEFFF;
+  border: none;
+  border-radius: 10px;
+  transition: all .1s;
 }
 
-#view {
-  padding: 10px 20px;
-  font-size: 25px;
-  text-align: right;
-  letter-spacing: 0.05em;
+#backspace {
+  padding: 22px 0;
 }
 
 #ac {
   grid-area: ac;
 }
 
+#add, #sub,
+#times, #div {
+  color: #EEE;
+  background-color: #252535;
+}
+
 #add {
   grid-area: add;
-  color: #0d0030;
 }
 
 #sub {
   grid-area: sub;
-  color: #0d0030;
 }
 
 #times {
   grid-area: times;
-  color: #0d0030;
 }
 
 #div {
   grid-area: div;
-  color: #0d0030;
 }
 
 #zero {

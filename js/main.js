@@ -69,10 +69,21 @@ const operators = document.querySelectorAll('.operator');
 operators.forEach(op => op.addEventListener('click', () => {
   const view = document.querySelector('#view');
   
-  firstValue = view.value;
-  operator = op.textContent;
+  if (firstValue != 0) {
+    secoundValue = view.value;
 
-  view.value = 0;
+    const result = operate(operator, firstValue, secoundValue);
+    clear();
+    display(result);
+
+    firstValue = view.value;
+    operator = op.textContent;
+  } else {
+    firstValue = view.value;
+    operator = op.textContent;
+
+    view.value = 0;
+  }
 }));
 
 const equal = document.querySelector('#equal');
@@ -87,3 +98,14 @@ equal.addEventListener('click', () => {
   clear();
   display(result);
 });
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', () => {
+  button.style.transform = 'scale(0.95)';
+}));
+
+buttons.forEach(button => button.addEventListener('transitionend', (e) => {
+  if (e.propertyName !== 'transform') return;
+  
+  e.target.style.transform = 'scale(1)';
+}));

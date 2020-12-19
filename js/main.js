@@ -1,6 +1,8 @@
+const view = document.querySelector('#view');
 let firstValue = 0;
 let secoundValue = 0;
 let operator = '';
+let clearView = false;
 
 const add = (num1, num2) => num1 + num2;
 
@@ -27,33 +29,37 @@ function operate(operator, num1, num2) {
 }
 
 function display(value) {
-  const view = document.querySelector('#view');
-
-  if (view.value.length > 7) return;
-
-  if (view.value != 0) value = view.value + value;
+  if (value - Math.floor(value) != 0 && `${value}`.length > 9)
+    value = value.toFixed(8);
 
   view.value = value;
 }
 
-function clear() {
-  const view = document.querySelector('#view');
-  view.value = 0;
+function digitFunc(digit) {
+
+  if (view.value.length > 9) {
+    alert('To many digits');
+    return;
+  }
+
+  if (firstValue != 0 && !clearView) {
+    view.value = 0;
+    clearView = !clearView;
+  } else if (view.value != 0) digit = view.value + digit;
+
+  display(digit);
+}
+
+function acFunc() {
+  display(0);
 
   firstValue = 0;
   secoundValue = 0;
   operator = '';
+  clearView = false;
 }
 
-const digits = document.querySelectorAll('.digits');
-digits.forEach(digit => digit.addEventListener('click', ({ path }) => display(path[0].textContent)));
-
-const ac = document.querySelector('#ac');
-ac.addEventListener('click', clear);
-
-const backspace = document.querySelector('#backspace');
-backspace.addEventListener('click', () => {
-  const view = document.querySelector('#view');
+function backspaceFunc() {
 
   if (view.value == 0) return;
   else if (view.value > 0 && view.value < 10) view.value = 0;
@@ -61,43 +67,48 @@ backspace.addEventListener('click', () => {
     const string = view.value.split('');
     string.pop();
 
-    view.value = string.join('');
+    display(string.join(''));
   }
-});
+}
 
-const operators = document.querySelectorAll('.operator');
-operators.forEach(op => op.addEventListener('click', () => {
-  const view = document.querySelector('#view');
+function operatorFunc(op) {
   
-  if (firstValue != 0) {
-    secoundValue = view.value;
+  if (firstValue != 0) equalFunc();
 
-    const result = operate(operator, firstValue, secoundValue);
-    clear();
-    display(result);
+  firstValue = view.value;
+  operator = op.textContent;
+}
 
-    firstValue = view.value;
-    operator = op.textContent;
-  } else {
-    firstValue = view.value;
-    operator = op.textContent;
-
-    view.value = 0;
-  }
-}));
-
-const equal = document.querySelector('#equal');
-equal.addEventListener('click', () => {
-  if  (firstValue == 0 || operator == 0) return;
-
-  const view = document.querySelector('#view');
+function equalFunc() {
+  if (firstValue == 0 && secoundValue == 0 && operator == 0) return;
 
   secoundValue = view.value;
 
+  if (operator == '/' && secoundValue == 0) {
+    acFunc();
+    view.value = 'Not today!';
+    return;
+  }
+
   const result = operate(operator, firstValue, secoundValue);
-  clear();
+  acFunc();
   display(result);
-});
+}
+
+const digits = document.querySelectorAll('.digits');
+digits.forEach(digit => digit.addEventListener('click', ({ path }) => digitFunc(path[0].textContent)));
+
+const ac = document.querySelector('#ac');
+ac.addEventListener('click', acFunc);
+
+const backspace = document.querySelector('#backspace');
+backspace.addEventListener('click', backspaceFunc);
+
+const operators = document.querySelectorAll('.operator');
+operators.forEach(op => op.addEventListener('click', () => operatorFunc(op)));
+
+const equal = document.querySelector('#equal');
+equal.addEventListener('click', equalFunc);
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', () => {

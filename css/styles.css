@@ -50,11 +50,11 @@ body {
 button {
   font-family: 'Langar';
   margin-top: 10px;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border: none;
   border-radius: 50%;
-  font-size: 25px;
+  font-size: 30px;
   cursor: pointer;
   display: flex;
   align-items: center;

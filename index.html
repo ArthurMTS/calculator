@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/styles.css">
-  <title>Calculator</title>
-</head>
-<body>
-  <div id="calculator">
-    <input id="view" type="text" readonly value="0">
-    <div id="buttons">
-      <button id="ac">AC</button>
-      <button id="backspace"><img src="./assets/delete.svg" alt=""></button>
-      <button id="add" class="operator">+</button>
-      <button class="digits">7</button>
-      <button class="digits">8</button>
-      <button class="digits">9</button>
-      <button id="sub" class="operator">-</button>
-      <button class="digits">4</button>
-      <button class="digits">5</button>
-      <button class="digits">6</button>
-      <button id="times" class="operator">x</button>
-      <button class="digits">1</button>
-      <button class="digits">2</button>
-      <button class="digits">3</button>
-      <button id="div" class="operator">/</button>
-      <button id="zero" class="digits">0</button>
-      <button id="equal">=</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/main.js" defer></script>
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div id="calculator">
+      <input id="view" type="text" readonly value="0" />
+      <div id="buttons">
+        <div class="row">
+          <button id="ac">AC</button>
+          <button id="backspace">
+            <i class="bx bx-arrow-back"></i>
+          </button>
+        </div>
+        <div class="row">
+          <button class="digits">7</button>
+          <button class="digits">8</button>
+          <button class="digits">9</button>
+          <button id="div" class="operator">/</button>
+        </div>
+        <div class="row">
+          <button class="digits">4</button>
+          <button class="digits">5</button>
+          <button class="digits">6</button>
+          <button id="times" class="operator">x</button>
+        </div>
+        <div class="row">
+          <button class="digits">1</button>
+          <button class="digits">2</button>
+          <button class="digits">3</button>
+          <button id="sub" class="operator">-</button>
+        </div>
+        <div class="row">
+          <button id="dot" class="digit">.</button>
+          <button id="zero" class="digits">0</button>
+          <button id="equal">=</button>
+          <button id="add" class="operator">+</button>
+        </div>
+      </div>
     </div>
-  </div>
-  
-  <script src="./js/main.js"></script>
-</body>
+  </body>
 </html>

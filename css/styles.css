@@ -13,7 +13,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(45deg, #252535, #787889);
+  background: #575757;
 }
 
 #calculator {
@@ -21,12 +21,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #454556;
-  padding: 10px;
-  box-shadow: 1px 1px 5px rgb(34, 34, 34);
+  background-color: #171717;
+  padding: 20px;
+  box-shadow: 5px 5px 10px #111;
+  border-radius: 30px;
 }
 
 #calculator #view {
+  width: 350px;
   padding: 0 20px;
   font-size: 35px;
   text-align: right;
@@ -37,65 +39,41 @@ body {
 #calculator #buttons {
   width: 100%;
   margin-top: 10px;
-  display: grid;
-  grid-gap: 10px;
-  grid-template: "ac ac . add"
-                  ". . . sub"
-                  ". . . times"
-                  ". . . div"
-                  "zero zero zero equal";
+}
+
+#calculator .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 button {
-  padding: 15px 0;
-  cursor: pointer;
-  font-size: 25px;
   font-family: 'Langar';
-  display: flex;
-  align-self: center;
-  justify-content: center;
-  background-color: #EFEFFF;
+  margin-top: 10px;
+  width: 80px;
+  height: 80px;
   border: none;
-  border-radius: 10px;
-  transition: all .1s;
+  border-radius: 50%;
+  font-size: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#backspace {
-  padding: 22px 0;
-}
-
-#ac {
-  grid-area: ac;
+#ac, #backspace {
+  background-color: crimson;
+  color: #fff;
 }
 
 #add, #sub,
 #times, #div {
-  color: #EEE;
-  background-color: #252535;
-}
-
-#add {
-  grid-area: add;
-}
-
-#sub {
-  grid-area: sub;
-}
-
-#times {
-  grid-area: times;
-}
-
-#div {
-  grid-area: div;
-}
-
-#zero {
-  grid-area: zero;
+  color: #fff;
+  background-color: goldenrod;
 }
 
 #equal {
   grid-area: equal;
-  background-color: #0d0030;
+  background-color: teal;
   color: #EEE;
 }
